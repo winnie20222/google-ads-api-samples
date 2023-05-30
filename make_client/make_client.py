@@ -2,16 +2,14 @@ from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
 from dotenv import dotenv_values
 
-
-# Make refresh token here:
-# https://developers.google.com/oauthplayground/#step1&scopes=https%3A//www.googleapis.com/auth/adwords&url=https%3A//&content_type=application/json&http_method=GET&useDefaultOauthCred=checked&oauthEndpointSelect=Google&oauthAuthEndpointValue=https%3A//accounts.google.com/o/oauth2/v2/auth&oauthTokenEndpointValue=https%3A//oauth2.googleapis.com/token&includeCredentials=unchecked&accessTokenType=bearer&autoRefreshToken=unchecked&accessType=offline&forceAprovalPrompt=checked&response_type=code
 def make_client(mcc_id="") -> GoogleAdsClient:
     """
     :param mcc_id: this is the ID of the MCC the user is attached to. If the User has direct access to an account,
     don't pass a value here. If the user only has access to an account via an MCC. Pass through the MCC ID here.
     :return: GoogleAdsClient
     """
-    config = dotenv_values("../.env")
+    config = dotenv_values("C:\Dev GoogleAdsAPI\google-ads-api-samples\.env.example")
+    print(config)  # Add this line to check the config dictionary
     credentials = {
         "developer_token": config["developer_token"],
         "refresh_token": config["refresh_token"],
